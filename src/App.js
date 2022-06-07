@@ -6,6 +6,25 @@ function App() {
   const [people, setPeople] = useState(data)
   const [index, setIndex] = React.useState(0)
 
+  const nextSlide = () => {
+    setIndex((oldIndex) => {
+      let index = oldIndex + 1
+      if (index > people.length - 1) {
+        index = 0
+      }
+      return index
+    })
+  }
+  const prevSlide = () => {
+    setIndex((oldIndex) => {
+      let index = oldIndex - 1
+      if (index < 0) {
+        index = people.length - 1
+      }
+      return index
+    })
+  }
+
   // useEffect(() => {
   //   const lastIndex = people.length - 1
   //   if (index < 0) {
@@ -15,25 +34,6 @@ function App() {
   //     setIndex(0)
   //   }
   // }, [index, people])
-
-  const nextSlide = () => {
-    setIndex((oldIndex) => {
-      let index = oldIndex + 1
-      if (index > people.length + 1) {
-        index = 0
-      }
-      return index
-    })
-  }
-  const prevSlide = () => {
-    setIndex((oldIndex) => {
-      let index = oldIndex - 1
-      if ((index = 0)) {
-        index = people.length - 1
-      }
-      return index
-    })
-  }
 
   useEffect(() => {
     let slider = setInterval(() => {
